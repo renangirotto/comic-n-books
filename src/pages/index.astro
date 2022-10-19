@@ -1,8 +1,45 @@
 ---
-import App from '../layouts/App.astro';
+import Text from '@components/Text.astro'
+import App from '@layouts/App.astro'
 ---
 
 <App>
-	New app
+  <main class="home">
+    <Text className="home__title" tag="h1">
+      <Text className="home__title">Comic</Text>
+      <Text className="home__title--small">and</Text>
+      <Text className="home__title">Books</Text>
+    </Text>
+  </main>
 </App>
 
+<style lang="scss" is:scoped>
+  .home {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+
+    &__title {
+      display: flex;
+      flex-direction: column;
+      font-size: 8rem;
+      line-height: 1;
+      text-align: center;
+      color: #496970;
+      &--small {
+        font-size: 3rem;
+        color: #e2dbcb;
+        transform: rotate(-90deg);
+        margin: 0 -1.5rem;
+        // writing-mode: sideways-lr;
+      }
+
+      @media (min-width: 200px) {
+        flex-direction: row;
+        align-items: center;
+      }
+    }
+  }
+</style>

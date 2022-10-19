@@ -1,0 +1,14 @@
+---
+export interface Props {
+  className?: string
+  tag?: string
+}
+
+const { className = '', tag = 'span' } = Astro.props
+
+const CustomTag = tag
+---
+
+<CustomTag class:list={[className]}>
+  <slot />
+</CustomTag>
