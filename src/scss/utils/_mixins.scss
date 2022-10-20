@@ -1,0 +1,53 @@
+@mixin for-phone-only {
+  @media (max-width: 37.438rem) {
+    @content;
+  }
+}
+
+@mixin for-tablet-portrait-up {
+  @media (min-width: 37.5rem) {
+    @content;
+  }
+}
+
+@mixin for-tablet-portait-only {
+  @media (min-width: 37.5rem) and (max-width: 56.188rem) {
+    @content;
+  }
+}
+
+@mixin for-tablet-landscape-up {
+  @media (min-width: 56.25rem) {
+    @content;
+  }
+}
+
+@mixin for-tablet-landscape-only {
+  @media (min-width: 56.25rem) and (max-width: 74.938rem) {
+    @content;
+  }
+}
+
+@mixin for-desktop-up {
+  @media (min-width: 75rem) {
+    @content;
+  }
+}
+
+@mixin for-desktop-only {
+  @media (min-width: 75rem) and (max-width: 112.438rem) {
+    @content;
+  }
+}
+
+@mixin for-big-desktop-up {
+  @media (min-width: 112.5rem) {
+    @content;
+  }
+}
+
+@mixin allow-animation {
+  @media (prefers-reduced-motion: 'no-preference') {
+    @content;
+  }
+}
