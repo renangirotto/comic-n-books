@@ -1,0 +1,61 @@
+---
+import settings from '@constants/index.js'
+
+export interface Props {
+  canonicalURL?: URL | string
+  description?: string
+  image?: string
+  title?: string
+}
+
+const pageInfo = {
+  title: Astro.props.title || settings.title,
+  description: Astro.props.description || settings.description,
+  canonicalURL: Astro.props.canonicalURL
+  // canonicalURL:
+  //   Astro.props.canonicalURL || new URL(Astro.url.pathname, Astro.site)
+  // image: new URL(Astro.props.image || './social.png', Astro.site)
+}
+---
+
+<!-- Base Meta Tags -->
+<meta charset="utf-8" />
+<meta
+  name="viewport"
+  content="width=device-width, initial-scale=1, viewport-fit=cover"
+/>
+<meta name="generator" content={Astro.generator} />
+
+<!-- Primary Meta Tags -->
+<title>{pageInfo.title || settings.title}</title>
+<meta name="title" content={pageInfo.title || settings.title} />
+<meta
+  name="description"
+  content={pageInfo.description || settings.description}
+/>
+
+<!-- Canonical -->
+<link rel="canonical" href={pageInfo.canonicalURL} />
+
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image" />
+<meta property="twitter:url" content={pageInfo.canonicalURL} />
+<meta property="twitter:title" content={pageInfo.title} />
+<meta property="twitter:description" content={pageInfo.description} />
+<!-- <meta property="twitter:image" content={image} /> -->
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&display=swap"
+  rel="stylesheet"
+  as="style"
+  onload="this.onload=null;this.rel='stylesheet'"
+/>
+<noscript>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&display=swap"
+    rel="stylesheet"
+    type="text/css"
+  />
+</noscript>

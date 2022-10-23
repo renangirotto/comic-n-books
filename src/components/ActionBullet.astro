@@ -1,0 +1,65 @@
+---
+export interface Props {
+  isHome?: boolean
+}
+
+const { isHome = 'false' } = Astro.props
+---
+
+<header class="header" data-home={`${isHome}`}>
+  <nav>
+    <ul class="header__links-list">
+      <li>
+        <a class="header__link" href="#">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"
+            ><path
+              d="M0 48V487.7C0 501.1 10.9 512 24.3 512c5 0 9.9-1.5 14-4.4L192 400 345.7 507.6c4.1 2.9 9 4.4 14 4.4c13.4 0 24.3-10.9 24.3-24.3V48c0-26.5-21.5-48-48-48H48C21.5 0 0 21.5 0 48z"
+            ></path>
+          </svg>
+        </a>
+      </li>
+      <li>
+        <a class="header__link" href="#">Sobre este projeto</a>
+      </li>
+      <li>
+        <a class="header__link" href="#">Onde comprar</a>
+      </li>
+    </ul>
+  </nav>
+</header>
+
+<style lang="scss">
+  .header {
+    box-sizing: border-box;
+    width: 100vw;
+
+    &:where(:not([data-home='true'])) {
+      position: sticky;
+      top: 0;
+    }
+
+    &:where([data-home='true']) {
+      position: fixed;
+      bottom: 0;
+    }
+
+    &__links-list {
+      @include for-desktop-up {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: calc($cb-size-lg * 2);
+      }
+    }
+
+    &__link {
+      display: block;
+      padding: $cb-size-md;
+      position: relative;
+      font-family: 'Noto Emoji', sans-serif;
+      font-size: calc($cb-size-md + $cb-size-xs);
+      color: $cb-color-primary;
+      text-decoration: none;
+    }
+  }
+</style>

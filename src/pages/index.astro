@@ -1,27 +1,31 @@
 ---
-import Text from '@components/Text.astro'
-import App from '@layouts/App.astro'
+// import ActionBullet from '@components/ActionBullet.astro'
+import Layout from '@layouts/Page.astro'
 ---
 
-<App>
-  <main class="home">
-    <Text className="home__title" tag="h1">
-      <Text className="home__title">Comic</Text>
-      <Text className="home__title--small">and</Text>
-      <Text className="home__title">Books</Text>
-    </Text>
-  </main>
-</App>
+<Layout>
+  <!-- <Header isHome={true} /> -->
+  <section class="home">
+    <h1 aria-label="Comic and Books" class="home__title">
+      <span aria-hidden="true" class="home__title">Comic</span>
+      <span aria-hidden="true" class="home__title--small">and</span>
+      <span aria-hidden="true" class="home__title">Books</span>
+    </h1>
+  </section>
+</Layout>
 
 <style lang="scss">
   .home {
     box-sizing: border-box;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
+    gap: $cb-size-md;
     width: 100vw;
     height: 100vh;
     padding: $cb-size-md;
+    position: relative;
 
     &__title {
       display: flex;
@@ -29,7 +33,7 @@ import App from '@layouts/App.astro'
       font-size: calc($cb-size-lg * 3);
       line-height: 1;
       text-align: center;
-      color: $cb-color-primary;
+      color: $cb-color-primary-pure;
 
       @include for-desktop-up {
         flex-direction: row;
@@ -39,7 +43,7 @@ import App from '@layouts/App.astro'
 
       &--small {
         font-size: calc($cb-size-lg * 2);
-        color: #e2dbcb;
+        color: $cb-color-secondary-dark;
 
         @include for-desktop-up {
           font-size: calc($cb-size-md * 3);

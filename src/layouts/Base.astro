@@ -1,0 +1,28 @@
+---
+import BaseHead from '@components/BaseHead.astro'
+import type { Props as BaseHeadProps } from '@components/BaseHead.astro'
+
+export interface Props {
+  seo?: BaseHeadProps
+}
+const { seo } = Astro.props
+---
+
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <BaseHead {...seo} />
+    <slot name="head-custom" />
+  </head>
+  <body>
+    <main>
+      <slot />
+    </main>
+    <style lang="scss">
+      body {
+        margin: 0;
+        background: $cb-color-secondary;
+      }
+    </style>
+  </body>
+</html>
